@@ -55,11 +55,12 @@ export default function LandingPage() {
               >
                 {/* Device placeholder image styled like a thermogun */}
                 <Image
-                  src="/placeholder.svg?height=420&width=560"
+                  src="/MASKOT.png?height=420&width=560"
                   alt="CRADLE device mockup"
                   width={560}
                   height={420}
-                  className="rounded-xl shadow-2xl ring-1 ring-white/30"
+                  className="rounded-xl shadow-2xl"
+                  style={{ background: 'transparent' }}
                   priority
                 />
               </motion.div>
