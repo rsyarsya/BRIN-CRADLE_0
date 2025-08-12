@@ -1,0 +1,65 @@
+// app/globals.css
+html {
+  scroll-behavior: smooth;
+}
+
+// app/dashboard/doctor/page.tsx
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Stethoscope } from "@/components/icons/stethoscope";
+import { useHashScroll } from "@/hooks/use-hash-scroll";
+
+const DoctorDashboard = () => {
+  const [connecting, setConnecting] = React.useState(false);
+
+  const connectDevice = () => {
+    setConnecting(true);
+    // Simulate device connection
+    setTimeout(() => {
+      setConnecting(false);
+    }, 2000);
+  };
+
+  useHashScroll();
+
+  return (
+    <main>
+      <section id="examine" className="scroll-mt-24">
+        <div className="mb-6 flex items-center justify-between">
+          <h1 className="text-2xl font-semibold text-gray-900">{"Doctor Dashboard"}</h1>
+          <Button
+            className="bg-[#007BFF] hover:bg-[#0a66d1] text-white"
+            onClick={connectDevice}
+            aria-label="Connect Device"
+          >
+            <Stethoscope className="mr-2 h-4 w-4" />
+            {connecting ? "Connecting..." : "Connect Device"}
+          </Button>
+        </div>
+      </section>
+      {/* rest of code here */}
+    </main>
+  );
+};
+
+export default DoctorDashboard;
+
+// app/dashboard/parent/page.tsx
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { useHashScroll } from "@/hooks/use-hash-scroll";
+
+const ParentDashboard = () => {
+  useHashScroll();
+
+  return (
+    <main>
+      <div id="results" className="scroll-mt-24" />
+      {/* Children List section grid here */}
+      <div id="notifications" className="scroll-mt-24" />
+      {/* rest of code here */}
+    </main>
+  );
+};
+
+export default ParentDashboard;
